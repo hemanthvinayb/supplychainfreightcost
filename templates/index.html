@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 style="color:DarkSlateGrey;">{{ prediction_text }}</h1>
+    <div style="color:blue">
+        <form action="{{ url_for('predict')}}" method="post" >
+            <h2>Predictive analysis</h2>
+            <h3>Country</h3><br><select name="Country" id="first" required="required">
+                <option value="Côte d Ivoire">Côte d Ivoire</option>
+                <option value="Vietnam">Vietnam</option>
+                <option value="Nigeria">Nigeria</option>
+                <option value="Zambia">Zambia</option>
+                <option value="Rwanda">Rwanda</option>
+                <option value='Haiti'>Haiti</option>
+                <option value="Tanzania">Tanzania</option>
+                <option value="Ethiopia">Ethiopia</option>
+                <option value="Guyana">Guyana</option>
+                <option value="Zimbabwe">Zimbabwe</option>
+                <option value="Namibia">Namibia</option>
+                <option value="Mozambique">Mozambique</option>
+                <option value="Botswana">Botswana</option>
+                <option value="Kenya">Kenya</option>
+                <option value="Uganda">Uganda</option>
+                <option value="Congo DRC">Congo DRC</option>
+                <option value="Burundi">Burundi</option>
+                <option value="Dominician Republic">Dominician Republic</option>
+                <option value="South Sudan">South Sudan</option>
+                <option value="Ghana">Ghana</option>
+                <option value="Swaziland">Swaziland</option>
+                <option value="Benin">Benin</option>
+                <option value="Senegal">Senegal</option>
+                <option value="Mali">Mali</option>
+                <option value="South Africa">South Africa</option>
+                <option value="Afghanishan">Afghanishan</option>
+                <option value="Cameroon">Cameroon</option>
+                <option value="Malawi">Malawi</option>
+                <option value="Togo">Togo</option>
+                <option value="Angola">Angola</option>
+                <option value="Libya">Libya</option>
+                <option value="Guatemala">Guatemala</option>
+                <option value="Guinea">Guinea</option>
+                <option value="Liberia">Liberia</option>
+                <option value="Pakistan">Pakistan</option>
+                <option value="Sierra Leone">Sierra Leone</option>
+            </select>
+            <h3>Fulfill Via</h3><br><select name="Fulfill Via" id="second" required="required">
+                <option value="Direct Drop">Direct Drop</option>
+                <option value="From RDC">From RDC</option>
+            </select>
+            <h3>Shipment Mode</h3><br><select name="Shipment Mode" id="third" required="required">
+                <option value="Air">Air</option>
+                <option value="Air Charter">Air Charter</option>
+                <option value="Ocean">Ocean</option>
+                <option value="Truck">Truck</option>
+            </select>
+            <h3>Product Group</h3><br><select name="Product Group" id="fourth" required="required">
+                <option value="ACT">ACT</option>
+                <option value="ARV">ARV</option>
+                <option value="ANTM">ANTM</option>
+                <option value="HRDT">HRDT</option>
+                <option value="MRDT">MRDT</option>
+            </select>
+            <h3>Unit of Measure (Per Pack)</h3>
+            <input id="fifth" name="Unit of Measure (Per Pack)" type="number ">
+            <h3>Line Item Quantity</h3><br><input id="sixth" name="Line Item Quantity" required="required">
+            <h3>Pack Price</h3><br><input id="seventh" name="Pack Price" required="required">
+            <h3>Unit Price</h3><br><input id="eigth" name="Unit Price" required="required">
+            <h3>Weight (Kilograms)</h3><br><input id="ninth" name="Weight (Kilograms)" required="required">
+            <h3>Scheduled Delivery Year</h3><br><input id="tenth" name="Scheduled Delivery Date Year" required="required" min="4">
+            <h3>Scheduled Delivery Month</h3><br><input id="eleventh" name="Scheduled Delivery Date Month" required="required">
+            <h3>Scheduled Delivery Day</h3><br><input id="twelth" name="Scheduled Delivery Date Day" required="required">
+            <br><br><button id="sub" type="submit ">Calculate the Freight Cost</button>
+            <br>
+        </form>
+        <br><br>
+    </div>
+    <style>
+        body {
+            background-color: Aquamarine;
+            text-align: center;
+            padding: 0px;
+        }
+
+        #research {
+            font-size: 18px;
+            width: 100px;
+            height: 23px;
+            top: 23px;
+        }
+
+        #box {
+            border-radius: 60px;
+            border-color: 45px;
+            border-style: solid;
+            font-family: cursive;
+            text-align: center;
+            background-color: rgb(168, 131, 61);
+            font-size: medium;
+            position: absolute;
+            width: 700px;
+            bottom: 9%;
+            height: 850px;
+            right: 30%;
+            padding: 0px;
+            margin: 0px;
+            font-size: 14px;
+        }
+
+        #fuel {
+            width: 83px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 20px;
+        }
+
+        #fuel:hover {
+            background-color: coral;
+        }
+
+        #research {
+            width: 99px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+
+        #research:hover {
+            background-color: coral;
+        }
+
+        #resea {
+            width: 99px;
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+
+        #resea:hover {
+            background-color: coral;
+        }
+
+        #sub {
+
+            height: 43px;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+
+        #sub:hover {
+            background-color: darkcyan;
+        }
+
+        #first {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        #second {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        #third {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        #fourth {
+            border-radius: 14px;
+            height: 25px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+    </style>
+</body>
+
+</html>
